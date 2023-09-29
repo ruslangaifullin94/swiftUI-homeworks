@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "40" : {
+
+    },
+    "100" : {
+
+    },
     "Choose background color" : {
       "localizations" : {
         "ru" : {
@@ -10,6 +16,12 @@
           }
         }
       }
+    },
+    "DarkTheme enabled" : {
+
+    },
+    "Height row" : {
+
     },
     "Hello" : {
 
@@ -23,6 +35,9 @@
           }
         }
       }
+    },
+    "LightTheme enabled" : {
+
     },
     "notData" : {
       "extractionState" : "manual",
@@ -65,6 +80,12 @@
 
     },
     "Superheroes" : {
+
+    },
+    "Title disabled" : {
+
+    },
+    "Title enabled" : {
 
     },
     "You selected: %@" : {
