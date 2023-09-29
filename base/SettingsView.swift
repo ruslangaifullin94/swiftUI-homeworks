@@ -11,17 +11,31 @@ struct SettingsView: View {
     
     var colors = ["Red", "Green", "Blue", "White", "Black"]
     
+    @State private var isChanging: Bool = false
     @State private var selectedColor = "White"
-    
-    @State private var sliderValue: Double = 0
-    
-    @State private var isOn: Bool = false
+    @Binding var sliderValue: Double
+    @Binding var titleOn: Bool
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Form {
             Section {
-                Slider(value: $sliderValue, in: -5...10)
-                Toggle("on", isOn: $isOn)
+                Text(colorScheme == .light ? "LightTheme enabled" : "DarkTheme enabled")
+                
+                Slider(value: $sliderValue, in: 40...100) {
+                    Text("Height row")
+                } minimumValueLabel: {
+                    Text("40")
+                } maximumValueLabel: {
+                    Text("100")
+                } onEditingChanged: { editing in
+                    isChanging = editing
+                }
+                if isChanging {
+                    InfoRow(superHero: nil, heightForRow: $sliderValue)
+                }
+                Toggle("on", isOn: $titleOn)
+                Text(titleOn ? "Title enabled" : "Title disabled")
             }
             Section {
                 Picker("Choose background color",  selection: $selectedColor) {
@@ -35,8 +49,4 @@ struct SettingsView: View {
         }
         
     }
-}
-
-#Preview {
-    SettingsView()
 }

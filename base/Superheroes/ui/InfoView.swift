@@ -11,6 +11,9 @@ struct InfoView: View {
     
     @StateObject var viewModel: InfoViewModel
         
+   @Binding var heightForRow: Double
+    var titleIsOn: Bool
+    
 //    @State private var presentedAlert: Bool = false
     
     var body: some View {
@@ -20,9 +23,10 @@ struct InfoView: View {
                 NavigationLink {
                     InfoDetails(superHero: superhero)
                 } label: {
-                    InfoRow(superHero: superhero)
+                    InfoRow(superHero: superhero, heightForRow: $heightForRow)
                 }
             }
+            .toolbar(titleIsOn ? .visible : .hidden, for: .navigationBar)
             .navigationTitle("Superheroes")
             .listStyle(.plain)
             .refreshable {
